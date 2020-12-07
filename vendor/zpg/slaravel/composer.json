@@ -1,0 +1,19 @@
+{
+    "name": "zpg/slaravel",
+    "authors": [
+        {
+            "name": "zhaopingang",
+            "email": "pingang.zhao@concentrix.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Slaravel\\": "src" 
+        },
+        "files": [
+            "src/Autoload/function.php"
+        ]
+    }
+}

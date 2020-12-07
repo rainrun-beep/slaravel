@@ -1,0 +1,27 @@
+{
+    "name": "zpg/frame",
+    "authors": [
+        {
+            "name": "zhaopingang",
+            "email": "pingang.zhao@concentrix.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    },
+
+    "repositories": {
+        "slaravel": {
+            "type": "path",
+            "url": "../Slaravel"
+        }
+    },
+    "require": {
+        "zpg/slaravel":"master-dev"
+
+    }
+}
