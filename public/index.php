@@ -6,6 +6,6 @@ $app = new Slaravel\Foundation\Application($_ENV['APP_BASE_PATH'] ?? dirname(__D
 // \Slaravel\Support\Facades\Test::test();
 // $app->singleton('kernel', \App\Http\Kernel::class);
 $kernel = $app->make('kernel', $app);
-$kernel->handle(\Slaravel\Http\Request::capture()); //capture 捕获
+$kernel->handle(\Slaravel\Http\Request::capture());
 // $config = $app->make('config')->all();
 // $app->registerConfigredProviders();

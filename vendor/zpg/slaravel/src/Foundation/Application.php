@@ -64,16 +64,8 @@ class Application extends Container {
      * 绑定核心容器别名(向application中添加标识和容器绑定,还没有实例化)
      */
     public function registerCoreContainerAliases() {
-        // $binds = [
-        //     'test' => \Slaravel\Test\Test::class,
-        //     'config' => \Slaravel\Config\Config::class,
-        //     'router' => \Slaravel\Routing\Router::class,
-        // ];
-
-        // foreach ($binds as $abstract => $bind) {
-        //     $this->bind($abstract, $bind);
-        // }
         $this->bindContainerAliases();
+
         $this->singletonContainerAliases();
     }
 

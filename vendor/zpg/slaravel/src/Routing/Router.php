@@ -62,12 +62,12 @@ class Router {
     public function match($method, $uri) {
         $routes = $this->routes;
         //array([test3] => object(Closure)#15 (0) {}, ['hello'] => 'hello@index')
-        foreach($routes[$method] as $path => $route) {
+        foreach($routes[$method] as $path => $action) {
             # 如果uri中没有斜杠拼接
             $path = ($path && substr($path, 0, 1) != '/') ? '/'.$path : $path;
             if ($path === $uri) {
-                #保存路由地址
-                $this->action = $route;
+                #保存控制器方法或者闭包
+                $this->action = $action;
                 break;
             }
         }
@@ -118,6 +118,7 @@ class Router {
 
     
 
+    # 触发路由控制器中的方法
     public function controllerDispatcher($controller, $method) {
         return $controller->$method();
     }

@@ -23,7 +23,7 @@ class Container {
     public function bind ($abstract, $concrete = null, $shared = false) {
         #绑定 -> 对于数组添加值
         $this->bindings[$abstract]['shared'] = $shared;  //是否共享 共享将这个值放入到数组中,以后想用的时候再取出来,所以都是同一个实例
-        $this->bindings[$abstract]['concrete'] = $concrete; //带命名空间的类名,用来过后实例
+        $this->bindings[$abstract]['concrete'] = $concrete; //带命名空间的类名,用来实例
     }
 
     /**
@@ -48,7 +48,7 @@ class Container {
 
     /**
      * 解析绑定
-     * 因为make是public,所以任何对象都可以调用, 所以再调用reslove进行解析,
+     * 任何对象都可以调用, 再调用reslove进行解析,
      * 提供一个给外接操作的接口
      */
     public function make($abstract, $parameters = []) {
@@ -81,11 +81,23 @@ class Container {
             $object = new $object(...[$parameters]);
         }
 
-        if(isset($this->bindings[$abstract]['shared'])) {
+        if ($this->isShared($abstract)) {
             $this->instances[$abstract] = $object;
-        }
+        } 
         return $object;
     }
+
+    /**
+     * 确定给定标识是否共享.
+     *
+     * @param  string  $abstract
+     * @return bool
+     */
+    public function isShared($abstract) {
+        return isset($this->instances[$abstract]) ||
+        (isset($this->bindings[$abstract]['shared']) &&
+        $this->bindings[$abstract]['shared'] === true);
+    } 
 
     /**
      * 根据参数将共享容器中添加实例

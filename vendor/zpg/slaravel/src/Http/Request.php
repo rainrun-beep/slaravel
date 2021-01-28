@@ -6,6 +6,7 @@ class Request {
     protected $method;  //请求方式
     protected $uri;  //请求路径
 
+    # 捕获当前的请求方式和路径
     public static function capture() {
         $request = self::createBase();
         # 访问方式

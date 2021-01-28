@@ -29,6 +29,7 @@ class Kernel {
 
     /**
      * 处理函数
+     * 调用句柄函数,句柄是一种特殊的智能指针,当一个应用程序要引用其他系统所管理的内存块或对象时,就要使用句柄
      */
     public function handle($request = null) {
         #请求对象
@@ -51,6 +52,7 @@ class Kernel {
         # 通过路由分发请求
         $this->app->make('router')->dispatcher($request);
 
+        # 通过管道返回请求结果
         return (new Pipline($this->app))
             ->send($request)
             ->through($this->middleware)
